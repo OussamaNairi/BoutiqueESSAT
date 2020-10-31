@@ -26,7 +26,7 @@
 
     <bean id="xyz" class="org.springframework.jdbc.datasource.DriverManagerDataSource"	>
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
-		<property name="url"	value="jdbc:mysql://localhost:3306/springdb1" />
+		<property name="url"	value="jdbc:mysql://localhost:3306/baseboutique" />
 		<property name="username" value="root" />
 		<property name="password" value="" />
     </bean>
