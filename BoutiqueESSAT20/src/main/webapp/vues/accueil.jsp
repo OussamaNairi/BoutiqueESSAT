@@ -8,8 +8,9 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Boutique</title>
-<spring:url value="/resources/files/bootstrap" var="bt" />
-<link rel="stylesheet" href="${bt}/css/bootstrap.min.css">
+<c:set var="rs" value="resources" />
+<c:set var="cxt" value="${pageContext.request.contextPath }" />
+<link  href="${cxt}/${rs}/files/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
 <nav class="navbar navbar-default navbar-fixed-top">
@@ -52,25 +53,26 @@
        <div class="col-md-3">
             <div class="list-group">
                 <a href="#" class="list-group-item active"> Tous les Produits </a>
-                <a href="#" class="list-group-item">PC-Protable</a>
-
+               <c:forEach items="${cats}" var="c" >
+                <a href="#" class="list-group-item">${c.description}</a>
+                </c:forEach>
             </div>
         </div>
 		
         <div class="col-md-9">
-
+  <c:forEach items="${prods}" var="p">
             <div class="col-md-4">
                 <div class="thumbnail">
-                    <img src="images/1.jpg" >
+                    <img src="${cxt }/${rs }/files/images/${p.id}.jpg" >
                     <div class="caption">
-                        <h3>PC DELL Latitude E5530</h3>
+                        <h3>${p.description}</h3>
                         <p><a href="#" class="btn btn-primary" >Ajouter Panier</a>
-                            <a href="#" class="btn btn-danger" >1520DT</a>
+                            <a href="#" class="btn btn-danger" >${p.prix }DT</a>
                         </p>
                     </div>
                 </div>
             </div>       
-          
+           </c:forEach>
         </div>
 
     </div>
