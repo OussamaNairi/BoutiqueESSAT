@@ -9,5 +9,42 @@
 		http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa-1.8.xsd
 		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd">
 
+<context:component-scan base-package="tn.essat" />
+<mvc:resources mapping="/resources/**" location="/WEB-INF/resources/" />
+	
+    <mvc:annotation-driven />   
 
+    <bean
+        class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix">
+            <value>/vues/</value>
+        </property>
+        <property name="suffix">
+            <value>.jsp</value>
+        </property>
+    </bean>
+
+    <bean id="xyz" class="org.springframework.jdbc.datasource.DriverManagerDataSource"	>
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<property name="url"	value="jdbc:mysql://localhost:3306/springdb1" />
+		<property name="username" value="root" />
+		<property name="password" value="" />
+    </bean>
+    
+    <jpa:repositories base-package="tn.essat" />
+<bean id="transactionManager"
+class="org.springframework.orm.jpa.JpaTransactionManager">
+<property name="entityManagerFactory" ref="entityManagerFactory" />
+</bean>
+
+<bean id="entityManagerFactory"
+class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+<property name="dataSource" ref="xyz" />
+<property name="packagesToScan" value="tn.essat" />
+<property name="jpaVendorAdapter">
+<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+<property name="generateDdl" value="true" />
+</bean>
+</property>
+</bean>
 </beans>
