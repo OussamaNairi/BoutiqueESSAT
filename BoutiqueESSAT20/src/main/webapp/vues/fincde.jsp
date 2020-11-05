@@ -21,25 +21,17 @@
 <div class="container">
  
     <div class="row" style="margin-top: 80px;">
-	<%@ include file="gauche.jsp" %>
-       
-		
-        <div class="col-md-9">
-  <c:forEach items="${prods}" var="p">
-            <div class="col-md-4">
-                <div class="thumbnail">
-                    <img src="${cxt }/${rs }/files/images/${p.id}.jpg" >
-                    <div class="caption">
-                        <h3>${p.description}</h3>
-                        <p><a href="${cxt }/addPanier/${p.id}" class="btn btn-primary" >Ajouter Panier</a>
-                            <a href="#" class="btn btn-danger" >${p.prix }DT</a>
-                        </p>
-                    </div>
-                </div>
-            </div>       
-           </c:forEach>
-        </div>
-
+	 <div class="col-md-12">
+           
+		    <div class="alert alert-success" role="alert">
+				Votre commande a bien été prise en compte. <br />
+				Nous vous remercions de votre confiance. <br />
+				Numéro de votre commande : <br />
+				Vous recevrez votre commande dans un délai de 10 jours maximum.
+			</div>
+		   
+		   
+		</div>   
     </div>
 
 </div>

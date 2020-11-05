@@ -3,6 +3,8 @@
      <%@ taglib prefix="c"      uri="http://java.sun.com/jsp/jstl/core" %>
     <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
     <%@ taglib prefix="form"   uri="http://www.springframework.org/tags/form"%>
+     <%@ taglib prefix="fn"      uri="http://java.sun.com/jsp/jstl/functions" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,6 +13,8 @@
 <c:set var="rs" value="resources" />
 <c:set var="cxt" value="${pageContext.request.contextPath }" />
 <link  href="${cxt}/${rs}/files/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<script src="${cxt}/${rs}/files/bootstrap/js/jquery.min.js"></script>
+<script src="${cxt}/${rs}/files/bootstrap/js/bootstrap.js"></script>
 </head>
 <body>
 <%@ include file="haut.jsp" %>
@@ -36,15 +40,15 @@
 							</tr>
                         </thead>
                         <tbody>
-							<c:forEach items="${sessionScope.monpanier.lignes}" var="li">
+							<c:forEach items="${sessionScope.monpanier.lignes}" var="li" varStatus="i">
 							<tr>
-								<th scope="row">1</th>
+								<th scope="row">${i.count}</th>
 								<td>
 									<img src="${cxt }/${rs }/files/images/${li.prod.id}.jpg" width="10%">${li.prod.description}
 								</td>
 								<td> ${li.prod.prix } DT</td>
 								<td> ${li.quantite }</td>
-								<td></td>
+								<td>${li.prod.prix * li.quantite}</td>
 								<td><a class="btn btn-danger " href="">Suppimer </a></td>
 							</tr>
 							</c:forEach>
@@ -53,8 +57,8 @@
 
                 </div>
 				<div class="panel-footer">					
-						<a href="#" class="btn btn-warning">POURSUIVRE VOS ACHATS</a>
-						<a href="#" class="btn btn-info">FINALISER VOTRE COMMANDE</a>				
+						<a href="${cxt}/home" class="btn btn-warning">POURSUIVRE VOS ACHATS</a>
+						<a href="${cxt}/connexion" class="btn btn-info">FINALISER VOTRE COMMANDE</a>				
 				</class>
             </div>
         </div>
